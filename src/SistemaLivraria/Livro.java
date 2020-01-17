@@ -3,7 +3,7 @@ package SistemaLivraria;
 public class Livro {
     private String titulo;
     private int totalPaginas;
-    private boolean aberto;
+    private boolean aberto = false;
     private String genero;
     private Autor autorLivro;
     private Editora editoraLivro;
@@ -24,6 +24,14 @@ public class Livro {
 
     public void setTotalPaginas(int totalPaginas) {
         this.totalPaginas = totalPaginas;
+    }
+
+    public boolean isAberto() {
+        return aberto;
+    }
+
+    public void setAberto(boolean aberto) {
+        this.aberto = aberto;
     }
 
     public String getGenero() {
@@ -66,10 +74,9 @@ public class Livro {
         this.anoPublicacao = anoPublicacao;
     }
 
-    public Livro(String titulo, int totalPaginas, boolean aberto, String genero, Autor autorLivro, Editora editoraLivro, int paginaAtual, String anoPublicacao) {
+    public Livro(String titulo, int totalPaginas, String genero, Autor autorLivro, Editora editoraLivro, int paginaAtual, String anoPublicacao) {
         this.titulo = titulo;
         this.totalPaginas = totalPaginas;
-        this.aberto = aberto;
         this.genero = genero;
         this.autorLivro = autorLivro;
         this.editoraLivro = editoraLivro;
@@ -84,17 +91,48 @@ public class Livro {
         biografia
     }
 
-    public boolean abrirAberto(){
-        if (aberto == true){
-            return true;
-        }
-        return false;
+    public void abrirLivro(){
+        this.aberto = true;
     }
 
-    public boolean fecharLivro(){
-        if (aberto == false){
-            return true;
-        }
-        return false;
+    public void fecharLivro(){
+        this.aberto = false;
     }
+
+    public int proximaPagina(){
+        if (aberto = true){
+            paginaAtual+=1;
+            return paginaAtual;
+        }
+        return paginaAtual;
+    }
+
+    public int paginaAnterior(){
+        if (aberto = true){
+            paginaAtual-=1;
+            return paginaAtual;
+        }
+        return paginaAtual;
+    }
+
+     public int folhear (int contador2){
+        if (aberto =true){
+            contador2 = paginaAtual + contador2;
+            return contador2;
+        }
+        return paginaAtual;
+     }
+
+    public String listarDados() {
+        return "Livro {" +
+                "Titulo = '" + titulo + '\'' +
+                ", Total de Páginas = " + totalPaginas +
+                ", Gênero = '" + genero + '\'' +
+                ", Autor = " + autorLivro.listarDados() +
+                ", Editora = " + editoraLivro.listarDados() +
+                ", Pagina Atual = " + paginaAtual +
+                ", Ano de Publicação = '" + anoPublicacao + '\'' +
+                '}';
+    }
+
 }

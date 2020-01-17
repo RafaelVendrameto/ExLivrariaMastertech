@@ -26,13 +26,16 @@ public class App {
         Livro novoLivro = new Livro(
                 "A vida de Francisco: O papa do povo",
                 256,
-                true,
                 Livro.genero.biografia.toString(),
                 autor1,
                 editora1,
                 116,
                 "2013"
         );
+
+
+        System.out.println(novoLivro.folhear(20));
+
 
     }
 }
